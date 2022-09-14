@@ -66,8 +66,8 @@ public class Address {
         this.state = state;
     }
 
-    public int getPinCode() {
-        return pinCode;
+    public String getPinCode() {
+        return String.valueOf(pinCode);
     }
 
     public void setPinCode(int pinCode) {
@@ -94,4 +94,6 @@ public class Address {
                 ", country='" + country + '\'' +
                 '}';
     }
+
+
 }

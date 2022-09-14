@@ -1,14 +1,18 @@
 package com.example.dao;
 
 import com.example.data.Standard;
+import com.example.data.Student;
 import com.example.util.DbConnection;
 
 import java.sql.*;
 
+@SuppressWarnings("ALL")
 public class StandardDAO {
+    private Standard standard;
+
     // standard table name as class_tbl
     //insert
-    public int insertIntoStandard(Standard standard) throws SQLException, ClassNotFoundException {
+    public int insertIntoStandard(Standard s1) throws SQLException, ClassNotFoundException {
         int rows = 0;
         //connection
         Connection connection = DbConnection.getConnection();
@@ -22,8 +26,9 @@ public class StandardDAO {
                 (sql, Statement.RETURN_GENERATED_KEYS);
         //set the values for placeholders
         //setter provided by prepared statement, using the type of data and index
-        preparedStatement.setString(1, standard.getStandard());
-        preparedStatement.setString(2,standard.getSection());
+        preparedStatement.setString(1,Standard.getStandard());
+        preparedStatement.setString(2,Standard.getSection());
+
         rows = preparedStatement.executeUpdate();
         int generatedId = 0;
         if(rows == 1){
@@ -38,4 +43,25 @@ public class StandardDAO {
     //update
     //delete
     //search
+    public int checkAndGetAddressId(String address)throws SQLException,ClassNotFoundException {
+        int classId = 0;
+        Connection connection = DbConnection.getConnection();
+        String sql = "Select class_id from class_tbl where  class_name=? and section=?";
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setString(1, Standard.getStandard());
+        preparedStatement.setString(2, Standard.getSection());
+        ResultSet resultSet =  preparedStatement.executeQuery() ;
+
+        if (resultSet.next()) {
+            classId = resultSet.getInt(1);
+        }
+        return classId;
+
+    }
+
+
+    public int checkAndGetClassId(Standard standard) {
+        return Integer.parseInt(null);
+    }
 }
+

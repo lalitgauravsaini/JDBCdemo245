@@ -1,8 +1,9 @@
 package com.example.data;
 
+@SuppressWarnings("ALL")
 public class Standard {
-    private String standard;
-    private String section;
+    private static String standard;
+    private static String section;
 
     public Standard() {
     }
@@ -12,7 +13,7 @@ public class Standard {
         this.section = section;
     }
 
-    public String getStandard() {
+    public static String getStandard() {
         return standard;
     }
 
@@ -20,7 +21,7 @@ public class Standard {
         this.standard = standard;
     }
 
-    public String getSection() {
+    public static String getSection() {
         return section;
     }
 

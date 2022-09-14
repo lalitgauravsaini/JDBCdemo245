@@ -1,12 +1,13 @@
 package com.example.data;
 
+@SuppressWarnings("ALL")
 public class Student {
 
-    private String name;
+    private static String name;
 
-    private int rollNo;
+    private static int rollNo;
 
-    private String email;
+    private static String email;
     private Address address;
     private Standard standard;
 
@@ -21,7 +22,7 @@ public class Student {
         this.standard = standard;
     }
 
-    public String getName() {
+    public static String getName() {
         return name;
     }
 
@@ -29,15 +30,15 @@ public class Student {
         this.name = name;
     }
 
-    public int getRollNo() {
-        return rollNo;
+    public static int getRollNo() {
+        return Integer.parseInt(String.valueOf(rollNo));
     }
 
     public void setRollNo(int rollNo) {
         this.rollNo = rollNo;
     }
 
-    public String getEmail() {
+    public static String getEmail() {
         return email;
     }
 
@@ -45,8 +46,8 @@ public class Student {
         this.email = email;
     }
 
-    public Address getAddress() {
-        return address;
+    public String getAddress() {
+        return String.valueOf(address);
     }
 
     public void setAddress(Address address) {
@@ -71,4 +72,10 @@ public class Student {
                 ", standard=" + standard +
                 '}';
     }
-}
+
+
+
+
+
+    }
+
